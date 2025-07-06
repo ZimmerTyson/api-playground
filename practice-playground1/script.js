@@ -52,7 +52,7 @@ async function testWithAwait() {
 
 const fetchBtn = document.getElementById("fetchBtn");
 const fetchBtn2 = document.getElementById("fetchBtn2");
-const fetchBtn3 = document.getElementById("fetchBtn3");
+
 
 
 fetchBtn.addEventListener("click", testWithAwait);
