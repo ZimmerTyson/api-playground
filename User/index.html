@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini User Dashboard</title>
+    <style>
+      .card {
+        margin: 10px;
+        padding: 10px;
+        box-shadow: 2px 2px 5px #00000030;
+        border: 2px solid black;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 350px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>User Dashboard</h1>
+      <input type="text" id="search" placeholder="Search users...">
+      <button id="loadUsers">Load Users</button>
+      <div id="userList" class="card"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
