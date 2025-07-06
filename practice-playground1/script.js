@@ -18,11 +18,23 @@ async function testWithoutAwait(postId) {
 testWithoutAwait();
 
 // With await - what about this one?
-async function testWithAwait() {
+async function testWithAwait(postId) {
   try{
   console.log("function called!");
-  const response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+  const loader = document.getElementById("loader");
+  
+  loader.style.display = "block";
+
+
+  const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`);
   const data = await response.json();
+
+  loader.style.display = "none";
+
+  if (!data.title || !data.body) {
+    throw new Error(`Post ${postId} not found`);
+    
+  }
 
   console.log("Data returned: ", data);
 
@@ -46,6 +58,13 @@ async function testWithAwait() {
 
   console.log("Elements should be added now");
   } catch (error) {
+    const loader = document.getElementById("loader");
+    const result = document.getElementById("result");
+
+    loader.style.display = "none";
+    result.innerHTML = `<p style="color: red; font-weight: bold;">Error: ${error.message}</p>`;
+
+
     console.error("Error occurred: ", error);
   }
 }
@@ -56,4 +75,4 @@ const fetchBtn2 = document.getElementById("fetchBtn2");
 
 
 fetchBtn.addEventListener("click", () => testWithAwait(1));
-fetchBtn2.addEventListener("click", () => testWithAwait(2));
+fetchBtn2.addEventListener("click", () => testWithAwait(29999));
