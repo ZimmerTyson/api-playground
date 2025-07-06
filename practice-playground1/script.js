@@ -11,8 +11,8 @@
 
 
 // Without await - what do you think this will log?
-async function testWithoutAwait() {
-  const response = fetch('https://jsonplaceholder.typicode.com/posts/1');
+async function testWithoutAwait(postId) {
+  const response = fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`);
   console.log('Without await:', response);
 }
 testWithoutAwait();
@@ -55,6 +55,5 @@ const fetchBtn2 = document.getElementById("fetchBtn2");
 
 
 
-fetchBtn.addEventListener("click", testWithAwait);
-fetchBtn2.addEventListener("click", testWithAwait);
-fetchBtn3.addEventListener("click", testWithAwait);
+fetchBtn.addEventListener("click", () => testWithAwait(1));
+fetchBtn2.addEventListener("click", () => testWithAwait(2));
